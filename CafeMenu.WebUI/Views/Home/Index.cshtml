@@ -1,0 +1,45 @@
+﻿@model IEnumerable<TaskManager.Entity.Product>
+
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+<h1>Products</h1>
+
+<table class="table table-bordered table-hover text-center shadow">
+    <thead class="thead-dark">
+        <tr style="font-size:18px;">
+            <th>
+                Product Name
+            </th>
+            <th>
+                Price
+            <th>
+                Image
+            </th>
+            <th>
+                Category 
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price) $
+                </td>
+                <td>
+                    <img src="~/images/@item.ImageMainPath" class="img-fluid" style="max-width:200px;">
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

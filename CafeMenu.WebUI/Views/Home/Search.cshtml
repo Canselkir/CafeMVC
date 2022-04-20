@@ -1,0 +1,50 @@
+﻿@using TaskManager.Entity;
+@model List<Product>
+@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<h1 class="text-center">Arama Sonuçları</h1>
+
+@if (Model != null && Model.Count()>0)
+{
+    <table class="table table-bordered table-hover text-center shadow">
+        <thead class="thead-dark">
+            <tr style="font-size:18px;">
+                <th>
+                    Product Name
+                </th>
+                <th>
+                    Price
+                <th>
+                    Image
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="shadow-sm mt-3">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        <img src="~/images/@item.ImageMainPath" class="img-fluid" style="max-width:200px;"> 
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="my-2 mt-4 text-md-left font-italic">
+        <p class="text-center m-0 font-weight-bold alert alert-danger">
+            Herhangi bir sonuç bulunamadı. Lütfen başka bir arama gerçekleştiriniz.
+        </p>
+    </div>
+
+}
